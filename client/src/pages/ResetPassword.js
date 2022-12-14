@@ -14,11 +14,12 @@ function UpdatePassword() {
 			setPasswordsMatch(false);
 		} else {
 			setPasswordsMatch(true);
+			let password = password1;
 			try {
 				const response = await axios.post(
 					`http://app.famallies.org/api/resetPassword/${userId}/${token}`,
 					{
-						password1,
+						password,
 					},
 					{
 						headers: {
