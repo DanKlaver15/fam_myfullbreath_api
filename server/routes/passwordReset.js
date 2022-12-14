@@ -69,11 +69,11 @@ router.route("/:userId/:token").post(async (req, res) => {
 		} catch (err) {
 			return err;
 		}
+		return res.status(400).send(password);
+		// await query.updateOne(User, user._id, password);
+		// await token.delete();
 
-		await query.updateOne(User, user._id, password);
-		await token.delete();
-
-		res.send("Password reset sucessfully!");
+		// return res.send("Password reset sucessfully!");
 	} catch (error) {
 		res.send("An error occured");
 		console.log(error);
