@@ -43,43 +43,43 @@ router.route("/:userId/:token").post(async (req, res) => {
 res.send(user);
 
 
-	try {
-		const user = await query.getOne(User, req.params.userId);
-		if (!user)
-			return res.status(400).send("Invalid link or request has expired");
+	// try {
+	// 	const user = await query.getOne(User, req.params.userId);
+	// 	if (!user)
+	// 		return res.status(400).send("Invalid link or request has expired");
 
-		const token = await Token.findOne({
-			userId: user._id,
-			token: req.params.token,
-		});
-		if (!token)
-			return res.status(400).send("Invalid link or request has expired");
+	// 	const token = await Token.findOne({
+	// 		userId: user._id,
+	// 		token: req.params.token,
+	// 	});
+	// 	if (!token)
+	// 		return res.status(400).send("Invalid link or request has expired");
 
-		try {
-			const checkedPassword = passwordCheck(password);
-			if (!checkedPassword)
-				return res
-					.status(400)
-					.send({ error: "Password does not meet requirements" });
-		} catch (err) {
-			return res.status(400).send({ error: `Password verification failed` });
-		}
-		try {
-			const hash = await bcrypt.hash(password, 12);
-			req.body.password = hash;
-		} catch (err) {
-			return err;
-		}
+	// 	try {
+	// 		const checkedPassword = passwordCheck(password);
+	// 		if (!checkedPassword)
+	// 			return res
+	// 				.status(400)
+	// 				.send({ error: "Password does not meet requirements" });
+	// 	} catch (err) {
+	// 		return res.status(400).send({ error: `Password verification failed` });
+	// 	}
+	// 	try {
+	// 		const hash = await bcrypt.hash(password, 12);
+	// 		req.body.password = hash;
+	// 	} catch (err) {
+	// 		return err;
+	// 	}
 
-		user.password = req.body.password;
-		await user.save();
-		await token.delete();
+	// 	user.password = req.body.password;
+	// 	await user.save();
+	// 	await token.delete();
 
-		res.send("Password reset sucessfully!");
-	} catch (error) {
-		res.send("An error occured");
-		console.log(error);
-	}
+	// 	res.send("Password reset sucessfully!");
+	// } catch (error) {
+	// 	res.send("An error occured");
+	// 	console.log(error);
+	// }
 });
 
 module.exports = router;
