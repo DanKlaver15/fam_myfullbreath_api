@@ -42,17 +42,19 @@ router.route("/:userId/:token").post(async (req, res) => {
 
 	try {
 		const user = await query.getOne(User, req.params.userId);
-		if (!user)
+		if (!user){
 			return res.status(400).send("Invalid link or request has expired");
+		}
 
 		const token = await Token.findOne({
 			userId: user._id,
 			token: req.params.token,
 		});
-		if (!token)
+		if (!token){
 			return res.status(400).send("Invalid link or request has expired");
+		}
 
-			return res.send(password);
+			return res.status(400).send(password);
 		// try {
 		// 	const checkedPassword = passwordCheck(password);
 		// 	if (!checkedPassword)
