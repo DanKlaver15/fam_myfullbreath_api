@@ -64,7 +64,7 @@ router.route("/:userId/:token").post(async (req, res) => {
 			const hash = await bcrypt.hash(password, 12);
 			req.body.password = hash;
 		} catch (err) {
-			return next(err);
+			return err;
 		}
 
 		user.password = req.body.password;
