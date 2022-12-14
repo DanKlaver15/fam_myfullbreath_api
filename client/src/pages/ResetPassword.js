@@ -12,7 +12,7 @@ function UpdatePassword() {
 		if (password1 === password2) {
 			try {
 				const response = await axios.post(
-					`http://app.famallies.org/api/password-reset/${userId}/${token}`,
+					`http://app.famallies.org/api/resetPassword/${userId}/${token}`,
 					{
 						password1,
 					},
