@@ -27,6 +27,7 @@ function UpdatePassword() {
 						},
 					}
 				);
+				console.log(response.data);
 				setResponse(response);
 			} catch (err) {
 				console.log(err);
