@@ -3,6 +3,7 @@ const query = require("../utils/query");
 const Token = require("../models/token");
 const crypto = require("crypto");
 const express = require("express");
+const bcrypt = require("bcrypt");
 const router = express.Router();
 const sendEmail = require("../utils/sendEmail");
 const passwordCheck = require("../utils/passwordRegex");
