@@ -5,7 +5,7 @@ const crypto = require("crypto");
 const express = require("express");
 const router = express.Router();
 const sendEmail = require("../utils/sendEmail");
-const userController = require("../controllers/userController");
+const passwordCheck = require("../utils/passwordRegex");
 
 router.route("/").post(async (req, res) => {
 	const { email } = req.body;
@@ -48,11 +48,29 @@ router.route("/:userId/:token").post(async (req, res) => {
 			userId: user._id,
 			token: req.params.token,
 		});
-		if (!token){
+		if (!token)
 			return res.status(400).send("Invalid link or request has expired");
+
+		try {
+			const checkedPassword = passwordCheck(password);
+			if (!checkedPassword)
+				return res
+					.status(400)
+					.send({ error: "Password does not meet requirements" });
+		} catch (err) {
+			return res.status(400).send({ error: `Password verification failed` });
+		}
+		try {
+			const hash = await bcrypt.hash(password, 12);
+			req.body.password = hash;
+		} catch (err) {
+			return err;
 		}
 
-		userController.updateOne(req, res);
+		await query.updateOne(User, user._id, req.body.password);
+		await token.delete();
+
+		res.send("Password reset sucessfully!");
 	} catch (error) {
 		res.send("An error occured");
 		console.log(error);
