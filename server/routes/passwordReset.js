@@ -26,7 +26,7 @@ router.route("/").post(async (req, res) => {
 			}).save();
 		}
 
-		const link = `http://app.famallies.org/resetPassword/${user._id}/${token.token}`;
+		const link = `http://app.famallies.org/resetLink/${user._id}/${token.token}`;
 		await sendEmail(user.email, "Password Reset for MyFullBreath", link);
 
 		res.send(`password reset link sent to your email account`);

@@ -16,7 +16,7 @@ function App() {
 			<Router>
 				<Routes>
 					<Route path="/verifyEmail" element={<VerifyEmail />} />
-					<Route path="/resetPassword/:userId/:token" element={<ResetPassword />} />
+					<Route path="/resetLink/:userId/:token" element={<ResetPassword />} />
 					<Route path="/" element={<Home />} />
 				</Routes>
 			</Router>
