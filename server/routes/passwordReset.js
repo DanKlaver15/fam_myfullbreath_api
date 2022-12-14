@@ -39,8 +39,12 @@ router.route("/").post(async (req, res) => {
 router.route("/:userId/:token").post(async (req, res) => {
 	const { password } = req.body;
 
+	const user = await query.getOne(User, req.params.userId);
+res.send(user);
+
+
 	try {
-		const user = await User.findById(req.params.userId);
+		const user = await query.getOne(User, req.params.userId);
 		if (!user)
 			return res.status(400).send("Invalid link or request has expired");
 
