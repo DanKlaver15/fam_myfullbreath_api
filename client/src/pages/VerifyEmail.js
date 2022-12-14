@@ -3,11 +3,11 @@
 // import axios from "axios";
 
 function VerifyEmail() {
-	<>
-	<div className="flex space-x-3">
-		Test verification
-	</div>
-</>
+	return (
+		<>
+			<div className="flex space-x-3">Test verification</div>
+		</>
+	);
 }
 
 export default VerifyEmail;
