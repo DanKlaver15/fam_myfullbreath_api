@@ -38,7 +38,8 @@ router.route("/").post(async (req, res) => {
 });
 
 router.route("/:userId/:token").post(async (req, res) => {
-	const { password } = req.body;
+	const { password1 } = req.body;
+	const password = password1;
 
 	try {
 		const user = await query.getOne(User, req.params.userId);
