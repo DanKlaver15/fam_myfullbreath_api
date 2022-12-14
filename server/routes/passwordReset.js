@@ -55,27 +55,26 @@ router.route("/:userId/:token").post(async (req, res) => {
 			return res.status(400).send("Invalid link or request has expired");
 		}
 
-			return res.status(400).send(password);
-		// try {
-		// 	const checkedPassword = passwordCheck(password);
-		// 	if (!checkedPassword)
-		// 		return res
-		// 			.status(400)
-		// 			.send({ error: "Password does not meet requirements" });
-		// } catch (err) {
-		// 	return res.status(400).send({ error: `Password verification failed` });
-		// }
-		// try {
-		// 	const hash = await bcrypt.hash(password, 12);
-		// 	req.body.password = hash;
-		// } catch (err) {
-		// 	return err;
-		// }
+		try {
+			const checkedPassword = passwordCheck(password);
+			if (!checkedPassword)
+				return res
+					.status(400)
+					.send({ error: "Password does not meet requirements" });
+		} catch (err) {
+			return res.status(400).send({ error: `Password verification failed` });
+		}
+		try {
+			const hash = await bcrypt.hash(password, 12);
+			password = hash;
+		} catch (err) {
+			return err;
+		}
 
-		// await query.updateOne(User, user._id, req.body.password);
-		// await token.delete();
+		await query.updateOne(User, user._id, password);
+		await token.delete();
 
-		// res.send("Password reset sucessfully!");
+		res.send("Password reset sucessfully!");
 	} catch (error) {
 		res.send("An error occured");
 		console.log(error);
