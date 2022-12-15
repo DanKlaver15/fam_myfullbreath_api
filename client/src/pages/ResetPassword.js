@@ -7,7 +7,7 @@ function UpdatePassword() {
 	const { userId, token } = useParams();
 	const [password1, setPassword1] = useState("");
 	const [password2, setPassword2] = useState("");
-	const [responseCode, setResponseCode] = useState("");
+	const [responseText, setResponseText] = useState("");
 	const [passwordsMatch, setPasswordsMatch] = useState(true);
 
 	const updatePassword = async (password1, password2) => {
@@ -15,7 +15,7 @@ function UpdatePassword() {
 			setPasswordsMatch(false);
 		} else {
 			setPasswordsMatch(true);
-			let password = password1;
+			const password = password1;
 			try {
 				const response = await axios.post(
 					`http://app.famallies.org/api/resetPassword/${userId}/${token}`,
@@ -23,8 +23,9 @@ function UpdatePassword() {
 						password,
 					}
 				);
-				setResponseCode(response.status);
-				console.log(response.status);
+
+				const data = await response.data;
+				setResponseText(data);
 			} catch (err) {
 				console.log(err);
 			}
@@ -101,7 +102,7 @@ function UpdatePassword() {
 							</div>
 							<div className="text-center text-xl font-bold tracking-tight text-indigo-600">
 								{passwordsMatch ? null : <div>Passwords do not match</div>}
-								{response.status == 200 ? (
+								{responseText == "Password reset sucessfully!" ? (
 									<div>Password successfully updated!</div>
 								) : null}
 							</div>
