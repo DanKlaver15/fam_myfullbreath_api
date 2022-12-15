@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import AppIcon from '../images/App_Icon.png'
+import AppIcon from "../images/App_Icon.png";
 
 function UpdatePassword() {
 	const { userId, token } = useParams();
@@ -103,7 +103,10 @@ function UpdatePassword() {
 							<div className="text-center text-xl font-bold tracking-tight text-indigo-600">
 								{passwordsMatch ? null : <div>Passwords do not match</div>}
 								{responseText == "Password reset sucessfully!" ? (
-									<div>Password successfully updated!</div>
+									<div>
+										<div>Password successfully updated!</div>
+										<div>You may now log in to the app</div>
+									</div>
 								) : null}
 							</div>
 						</form>
