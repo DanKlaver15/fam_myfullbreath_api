@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import AppIcon from '../images/App_Icon.png'
 
 function UpdatePassword() {
 	const { userId, token } = useParams();
@@ -37,7 +38,7 @@ function UpdatePassword() {
 				<div className="sm:mx-auto sm:w-full sm:max-w-md">
 					<img
 						className="mx-auto h-24 w-auto rounded-lg"
-						src="../images/App_Icon.png"
+						src={AppIcon}
 						alt="Fight Asthma Milwaukee Allies"
 					/>
 					<h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-200">
