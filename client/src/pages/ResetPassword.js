@@ -7,7 +7,7 @@ function UpdatePassword() {
 	const { userId, token } = useParams();
 	const [password1, setPassword1] = useState("");
 	const [password2, setPassword2] = useState("");
-	const [response, setResponse] = useState("");
+	const [responseCode, setResponseCode] = useState("");
 	const [passwordsMatch, setPasswordsMatch] = useState(true);
 
 	const updatePassword = async (password1, password2) => {
@@ -23,9 +23,8 @@ function UpdatePassword() {
 						password,
 					}
 				);
-				const data = await response.data;
-				console.log(data);
-				setResponse(data);
+				setResponseCode(response.status);
+				console.log(response.status);
 			} catch (err) {
 				console.log(err);
 			}
