@@ -45,7 +45,7 @@ router.route("/:userId/:token").post(async (req, res) => {
 		if (!user){
 			return res.status(400).send("Invalid link or request has expired");
 		}
-
+console.log(user);
 		const token = await Token.findOne({
 			userId: user._id,
 			token: req.params.token,
@@ -53,7 +53,7 @@ router.route("/:userId/:token").post(async (req, res) => {
 		if (!token){
 			return res.status(400).send("Invalid link or request has expired");
 		}
-
+console.log(token);
 		try {
 			const checkedPassword = passwordCheck(password);
 			if (!checkedPassword)
@@ -63,13 +63,14 @@ router.route("/:userId/:token").post(async (req, res) => {
 		} catch (err) {
 			return res.status(400).send({ error: `Password verification failed` });
 		}
+
 		try {
 			const hash = await bcrypt.hash(password, 12);
-			password = hash;
+			req.body.password = hash;
 		} catch (err) {
 			return err;
 		}
-		return res.status(400).send(password);
+		return res.status(400).send(req.body);
 		// await query.updateOne(User, user._id, password);
 		// await token.delete();
 

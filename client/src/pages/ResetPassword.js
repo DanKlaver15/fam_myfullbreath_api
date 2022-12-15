@@ -16,7 +16,6 @@ function UpdatePassword() {
 		} else {
 			setPasswordsMatch(true);
 			let password = password1;
-			console.log(password);
 			try {
 				const response = await axios.post(
 					`http://app.famallies.org/api/resetPassword/${userId}/${token}`,
@@ -25,6 +24,7 @@ function UpdatePassword() {
 					}
 				);
 				const data = await response.data;
+				console.log(data);
 				setResponse(data);
 			} catch (err) {
 				console.log(err);
