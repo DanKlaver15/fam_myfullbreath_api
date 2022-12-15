@@ -23,8 +23,8 @@ function UpdatePassword() {
 						password,
 					}
 				);
-				console.log(response);
-				setResponse(response);
+				const data = await response.data;
+				setResponse(data);
 			} catch (err) {
 				console.log(err);
 			}
@@ -37,7 +37,7 @@ function UpdatePassword() {
 				<div className="sm:mx-auto sm:w-full sm:max-w-md">
 					<img
 						className="mx-auto h-24 w-auto rounded-lg"
-						src="App_Icon.png"
+						src="../../public/App_Icon.png"
 						alt="Fight Asthma Milwaukee Allies"
 					/>
 					<h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-200">
