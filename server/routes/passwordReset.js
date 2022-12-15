@@ -70,11 +70,11 @@ console.log(token);
 		} catch (err) {
 			return err;
 		}
-		return res.status(400).send(req.body);
-		// await query.updateOne(User, user._id, password);
-		// await token.delete();
 
-		// return res.send("Password reset sucessfully!");
+		await query.updateOne(User, user._id, req.body);
+		await token.delete();
+
+		return res.send("Password reset sucessfully!");
 	} catch (error) {
 		res.send("An error occured");
 		console.log(error);
