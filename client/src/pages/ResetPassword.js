@@ -102,7 +102,7 @@ function UpdatePassword() {
 							</div>
 							<div className="text-center text-xl font-bold tracking-tight text-indigo-600">
 								{passwordsMatch ? null : <div>Passwords do not match</div>}
-								{responseText == "Password reset sucessfully!" ? (
+								{responseText === "Password reset sucessfully!" ? (
 									<div>
 										<div>Password successfully updated!</div>
 										<div>You may now log in to the app</div>
