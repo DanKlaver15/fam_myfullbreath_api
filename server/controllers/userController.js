@@ -2,7 +2,6 @@ const User = require("../models/user");
 const query = require("../utils/query");
 const crudController = require("../utils/crud");
 const bcrypt = require("bcrypt");
-const passwordCheck = require("../utils/passwordRegex");
 
 const createOne = async (req, res) => {
 	const { email, password, userType } = req.body;
@@ -40,15 +39,6 @@ const updateOne = async (req, res, next) => {
 
 	if (password) {
 		try {
-			const checkedPassword = passwordCheck(password);
-			if (!checkedPassword)
-				return res
-					.status(400)
-					.send({ error: "Password does not meet requirements" });
-		} catch (err) {
-			return res.status(400).send({ error: `Password verification failed` });
-		}
-		try {
 			const hash = await bcrypt.hash(password, 12);
 			req.body.password = hash;
 		} catch (err) {
@@ -59,7 +49,7 @@ const updateOne = async (req, res, next) => {
 		const updatedUser = await query.updateOne(User, id, req.body);
 
 		if (!updatedUser)
-			return res.status(400).send({ error: `Failed to update user  ${password}` });
+			return res.status(400).send({ error: `Failed to update user` });
 
 		res.status(200).send(updatedUser);
 	} catch (err) {

@@ -1,12 +1,12 @@
 const User = require("../models/user");
 const query = require("../utils/query");
-const Token = require("../models/token");
+const ResetToken = require("../models/token");
 const crypto = require("crypto");
 const express = require("express");
 const bcrypt = require("bcrypt");
 const router = express.Router();
 const sendEmail = require("../utils/sendEmail");
-const passwordCheck = require("../utils/passwordRegex");
+const { validateUser } = require("../middlewares/validate");
 
 router.route("/").post(async (req, res) => {
 	const { email } = req.body;
@@ -37,7 +37,7 @@ router.route("/").post(async (req, res) => {
 	}
 });
 
-router.route("/:userId/:token").post(async (req, res) => {
+router.route("/:userId/:token").post(validateUser, async (req, res) => {
 	const { password } = req.body;
 
 	try {
@@ -45,23 +45,13 @@ router.route("/:userId/:token").post(async (req, res) => {
 		if (!user){
 			return res.status(400).send("Invalid link or request has expired");
 		}
-console.log(user);
-		const token = await Token.findOne({
+
+		const token = await ResetToken.findOne({
 			userId: user._id,
 			token: req.params.token,
 		});
 		if (!token){
 			return res.status(400).send("Invalid link or request has expired");
-		}
-console.log(token);
-		try {
-			const checkedPassword = passwordCheck(password);
-			if (!checkedPassword)
-				return res
-					.status(400)
-					.send({ error: "Password does not meet requirements" });
-		} catch (err) {
-			return res.status(400).send({ error: `Password verification failed` });
 		}
 
 		try {

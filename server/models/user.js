@@ -14,11 +14,16 @@ const userSchema = new mongoose.Schema(
 			lowercase: true,
 			unique: true,
 		},
-		password: { type: String, required: true, minlength: 10, trim: true },
+		password: { type: String, required: true, trim: true },
 		userType: { type: Int32, required: true },
+		isEmailVerifiedFlag: { type: Boolean, required: true, default: false },
 		isActiveResearchFlag : { type: Boolean, default: false },
-		needsOnboardingFlag : { type: Boolean, default: true },
+		firstName: { type: String, required: true, trim: true },
+		lastName: { type: String, required: true, trim: true },
+		dob: { type: Date, required: true, trim: true },
+		isOnboardedFlag: { type: Boolean, default: true },
 		createdAt: { type: Date, default: Date.now },
+		loginToken: { type: String, default: null },
 	});
 
 userSchema.pre("save", async function preSave(next) {

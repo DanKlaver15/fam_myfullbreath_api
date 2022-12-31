@@ -18,8 +18,6 @@ const login = async (req, res) => {
     if (!match)
       return res.status(401).send({ error: "Invalid email or password" });
 
-    user.online = true;
-
     const updatedUser = await query.updateOne(User, user);
 
     const token = user.generateAuthToken();

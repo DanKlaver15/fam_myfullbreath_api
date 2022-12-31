@@ -6,7 +6,7 @@ const Joi = require("joi");
 * At least one digit \
 * At least one upper case letter \
 * At least one lower case letter \
-* At least one special character which includes !@#$%&*()-+=^ \
+* At least one special character which includes !#$%&* \
 * Doesn’t contain any white space
 */
 
@@ -14,7 +14,7 @@ const validateUser = (req, res, next) => {
 	const schema = Joi.object({
 		email: Joi.string().email(),
 		password: Joi.string().regex(
-			/((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))/
+			/^(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z])(?=\D*\d)(?=[^!#$%&*]*[!#$%&*])[A-Za-z0-9!#$%&*]{8,30}$/
 		),
 		userType: Joi.number().min(1).required(),
 	});
