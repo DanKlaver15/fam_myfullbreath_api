@@ -1,6 +1,6 @@
 const User = require("../models/user");
 const query = require("../utils/query");
-const sendVerifyEmail = require("../utils/verifyEmail");
+const sendVerificationEmail = require("../utils/verifyEmail");
 
 const sendVerifyEmail = async (req, res) => {
 	const { email } = req.body;
@@ -14,7 +14,7 @@ const sendVerifyEmail = async (req, res) => {
 		}
 
 		const link = `http://app.famallies.org/verifyEmail/${user._id}`;
-		await sendVerifyEmail(user.email, "Please Verify Your Email For MyFullBreath", link);
+		await sendVerificationEmail(user.email, "Please Verify Your Email For MyFullBreath", link);
 
 		res.send(`Email address verification successfully sent`);
 	} catch (error) {
