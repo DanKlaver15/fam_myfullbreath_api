@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 let aws = require("@aws-sdk/client-ses");
 let { defaultProvider } = require("@aws-sdk/credential-provider-node");
 
-const sendVerifyEmail = async (email, subject, link) => {
+const sendVerificationEmail = async (email, subject, link) => {
 	try {
 		const ses = new aws.SES({
 			apiVersion: "2022-12-11",
@@ -38,4 +38,4 @@ const sendVerifyEmail = async (email, subject, link) => {
 	}
 };
 
-module.exports = sendVerifyEmail;
+module.exports = sendVerificationEmail;

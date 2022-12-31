@@ -10,10 +10,7 @@ function VerifyEmail() {
 	const verifyEmail = async (userId) => {
 		try {
 			const response = await axios.post(
-				`http://app.famallies.org/api/verifyEmail/${userId}`,
-				{
-					email,
-				}
+				`http://app.famallies.org/api/verifyEmail/${userId}`
 			);
 
 			const data = await response.data;
