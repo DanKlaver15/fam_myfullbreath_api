@@ -24,19 +24,17 @@ const sendVerifyEmail = async (req, res) => {
 };
 
 const updateOne = async (req, res) => {
-	const { id } = req.params;
-	return res.send({id: id});
-	// try {
-	// 	const updatedUser = await query.updateOne(User, id, { isEmailVerifiedFlag: true });
+	try {
+		const updatedUser = await query.updateOne(User, req.params.userId, { isEmailVerifiedFlag: true });
 
-	// 	if (!updatedUser) {
-	// 		return res.status(400).send({ error: `Failed to update user` });
-	// 	}
+		if (!updatedUser) {
+			return res.status(400).send({ error: `Failed to update user` });
+		}
 
-	// 	res.status(200).send({ email: updatedUser.email, verified: true });
-	// } catch (err) {
-	// 	return res.status(500).send({ error: `Error: ${err}` });
-	// }
+		res.status(200).send({ email: updatedUser.email, verified: true });
+	} catch (err) {
+		return res.status(500).send({ error: `Error: ${err}` });
+	}
 };
 
 module.exports = { sendVerifyEmail, updateOne };
