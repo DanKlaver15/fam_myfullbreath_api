@@ -18,7 +18,7 @@ const sendVerificationEmail = async (email, subject, link) => {
 			from: "noreply@app.famallies.org",
 			to: email,
 			subject: subject,
-			html: `<img src="cid:appIcon" alt="MyFullBreath App Icon" style="width:340;height:324" /><br> <p>Hi,</p> <p>You recently created an account for the MyFullBreath mobile app.</p> <p>Please use the link below to verify your email address:</p> <a href=${link}>${link}</a>`,
+			html: `<img src="cid:appIcon" alt="MyFullBreath App Icon" style="width:210px;height:200px" /><br><br> <p>Hi,</p> <p>You recently created an account for the MyFullBreath mobile app.</p> <p>Please use the link below to verify your email address:</p> <a href=${link}>${link}</a>`,
 			attachments: [{
 				filename: "App_Icon.png",
 				path: process.cwd() + "/images/App_Icon.png",
