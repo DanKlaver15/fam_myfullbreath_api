@@ -24,9 +24,11 @@ const sendVerificationEmail = async (email, subject, link) => {
 			Please use the link below to verify your email address:
 			
 			${link}`,
+			html: '<img src="cid:App_Icon.png" alt="MyFullBreath Icon"/>',
 			attachments: [{
 				filename: "App_Icon.png",
 				path: process.cwd() + "images/App_Icon.png",
+				cid: "App_Icon.png"
 			}]
 		});
 
