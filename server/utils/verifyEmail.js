@@ -23,7 +23,11 @@ const sendVerificationEmail = async (email, subject, link) => {
 			You recently created an account for the MyFullBreath mobile app.
 			Please use the link below to verify your email address:
 			
-			${link}`
+			${link}`,
+			attachments: [{
+				filename: "App_Icon.png",
+				path: process.cwd() + "images/App_Icon.png",
+			}]
 		});
 
 		console.log("email sent sucessfully");
