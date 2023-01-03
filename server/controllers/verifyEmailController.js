@@ -27,10 +27,11 @@ const updateOne = async (req, res) => {
 	const { id } = req.params;
 
 	try {
-		const updatedUser = await query.updateOne(User, id, {isEmailVerifiedFlag: true});
+		const updatedUser = await query.updateOne(User, id, { isEmailVerifiedFlag: true });
 
-		if (!updatedUser)
+		if (!updatedUser) {
 			return res.status(400).send({ error: `Failed to update user` });
+		}
 
 		res.status(200).send({ email: updatedUser.email, verified: true });
 	} catch (err) {

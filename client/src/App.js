@@ -15,7 +15,7 @@ function App() {
     <div className="App">
 			<Router>
 				<Routes>
-					<Route path="/verifyEmail" element={<VerifyEmail />} />
+					<Route path="/verifyEmail/:userId" element={<VerifyEmail />} />
 					<Route path="/resetLink/:userId/:token" element={<ResetPassword />} />
 					<Route path="/" element={<Home />} />
 				</Routes>

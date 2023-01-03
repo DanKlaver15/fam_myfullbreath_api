@@ -14,6 +14,7 @@ function VerifyEmail() {
 			);
 
 			const data = await response.data;
+			console.log(data);
 			setSuccess(data.verified);
 		} catch (err) {
 			console.log(err);
