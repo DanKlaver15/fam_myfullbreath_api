@@ -18,14 +18,14 @@ const sendVerificationEmail = async (email, subject, link) => {
 			from: "noreply@app.famallies.org",
 			to: email,
 			subject: subject,
-			html: `<img src="cid:appIcon" /> <p>Hi,</p> <p>You recently created an account for the MyFullBreath mobile app.</p> <p>Please use the link below to verify your email address:</p> <a href=${link}>${link}</a>`,
+			html: `<img src="cid:appIcon" width="340" height="324" /></br> <p>Hi,</p> <p>You recently created an account for the MyFullBreath mobile app.</p> <p>Please use the link below to verify your email address:</p> <a href=${link}>${link}</a>`,
 			attachments: [{
 				filename: "App_Icon.png",
 				path: process.cwd() + "/images/App_Icon.png",
 				cid: "appIcon"
 			}]
 		});
-		console.log("path: " + process.cwd());
+		
 		console.log("email sent sucessfully");
 	} catch (error) {
 		console.log(error, "email not sent");
