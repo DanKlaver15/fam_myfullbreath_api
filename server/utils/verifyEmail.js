@@ -27,7 +27,7 @@ const sendVerificationEmail = async (email, subject, link) => {
 			html: 'Embedded image: <img src="cid:AppIcon',
 			attachments: [{
 				filename: 'App_Icon.png',
-				path: '../../client/src/images/App_Icon.png',
+				path: '../images/App_Icon.png',
 				cid: 'AppIcon'
 			}]
 		});
