@@ -25,7 +25,7 @@ const sendVerificationEmail = async (email, subject, link) => {
 				cid: "appIcon"
 			}]
 		});
-
+		console.log("path: " + process.cwd());
 		console.log("email sent sucessfully");
 	} catch (error) {
 		console.log(error, "email not sent");
