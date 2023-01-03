@@ -4,6 +4,6 @@ const verifyEmailController = require("../controllers/verifyEmailController");
 const { validateUser } = require("../middlewares/validate");
 
 router.route("/").post(validateUser, verifyEmailController.sendVerifyEmail);
-router.route("/:userId").post(validateUser, verifyEmailController.updateOne);
+router.route("/:userId").post(verifyEmailController.updateOne);
 
 module.exports = router;
