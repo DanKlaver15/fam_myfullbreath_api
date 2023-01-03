@@ -25,7 +25,7 @@ const sendVerifyEmail = async (req, res) => {
 
 const updateOne = async (req, res) => {
 	const { id } = req.params;
-	return res.send(id);
+	return res.send({id: id});
 	// try {
 	// 	const updatedUser = await query.updateOne(User, id, { isEmailVerifiedFlag: true });
 
