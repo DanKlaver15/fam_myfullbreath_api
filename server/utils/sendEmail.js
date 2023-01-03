@@ -18,12 +18,12 @@ const sendEmail = async (email, subject, link) => {
 			from: "noreply@app.famallies.org",
 			to: email,
 			subject: subject,
-			text: `Hi,
-			
-			You recently requested a password reset for the MyFullBreath mobile app.
-			Please use the link below to reset your password:
-			
-			${link}`,
+			html: `<img src="cid:appIcon" alt="MyFullBreath App Icon" style="width:210px;height:200px"></img><br><br> <p>Hi,</p> <p>You recently requested a password reset for the MyFullBreath mobile app.</p> <p>Please use the link below to reset your password:</p> <a href=${link}>${link}</a>`,
+			attachments: [{
+				filename: "App_Icon.png",
+				path: process.cwd() + "/images/App_Icon.png",
+				cid: "appIcon"
+			}]
 		});
 
 		console.log("email sent sucessfully");
