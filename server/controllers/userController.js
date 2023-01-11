@@ -20,12 +20,13 @@ const createOne = async (req, res) => {
 
 		const newUser = await query.createOne(User, req.body);
 
-		if (!newUser)
+		if (!newUser) {
 			return res.status(400).send({ error: "Failed to create new user" });
+		}
 
 		const token = await newUser.generateAuthToken();
 
-		return res.status(201).send({ user: newUser, token });
+		return res.status(201).send({ user: newUser, token: token });
 	} catch (err) {
 		return res.status(500).send({ error: err });
 	}
