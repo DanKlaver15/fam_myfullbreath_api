@@ -22,7 +22,7 @@ const login = async (req, res) => {
 
     const token = user.generateAuthToken();
 
-    return res.status(201).send({ user: updatedUser, token });
+    return res.status(201).send({ user: updatedUser, token: token });
   } catch (err) {
     return res.status(500).send({ error: err });
   }
