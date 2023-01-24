@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const Int32 = require("mongoose-int32").loadType(mongoose);
 const secretStrings = require("./../config/retrieveSecrets");
-const { addressSchema } = require("./Address");
+const { addressSchema } = require("./address");
 
 const userSchema = new mongoose.Schema(
 	{
