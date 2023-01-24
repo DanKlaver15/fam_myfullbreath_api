@@ -16,6 +16,6 @@ const centerSchema = new Schema({
 	}
 });
 
-const ChildcareCenter = mongoose.model("ChildcareCenter", centerSchema);
+const ChildcareCenter = mongoose.model("Childcare_Center", centerSchema);
 
 module.exports = ChildcareCenter;
