@@ -4,7 +4,7 @@ const query = require("../utils/query");
 const getAll = async (res) => {
 	try {
 		const centers = await query.getAll(ChildcareCenter);
-		res.status(200).send(centers);
+		return res.status(200).send(centers);
 	}
 	catch (err) {
     return res.status(500).send({ error: `Error: ${err}` });
