@@ -8,4 +8,4 @@ const contactSchema = new Schema({
 	phone: { type: Number, trim: true }
 });
 
-module.exports = contactSchema;
+module.exports = {contactSchema};
