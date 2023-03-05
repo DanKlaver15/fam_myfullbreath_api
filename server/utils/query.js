@@ -3,7 +3,7 @@ const getOne = async (model, id) => {
 };
 
 const getAll = async (model) => {
-	return model.find({}).exec();
+	return model.find({});
 };
 
 const createOne = async (model, fields) => {
