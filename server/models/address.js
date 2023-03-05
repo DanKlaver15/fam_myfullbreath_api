@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Int32 = require("mongoose-int32").loadType(mongoose);
 
 const addressSchema = new mongoose.Schema(
 	{
@@ -7,9 +6,8 @@ const addressSchema = new mongoose.Schema(
 		address2: { type: String, trim: true },
 		city: { type: String, required: true, trim: true },
 		state: { type: String, required: true, trim: true },
+		stateShort: { type: String, required: true, trim: true },
 		zip: { type: Number, required: true, trim: true },
 	});
 
-const Address = mongoose.model("Address", addressSchema);
-
-module.exports = { addressSchema, Address };
+module.exports = { addressSchema };

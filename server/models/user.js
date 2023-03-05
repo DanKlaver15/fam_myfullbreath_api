@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const Int32 = require("mongoose-int32").loadType(mongoose);
 const secretStrings = require("./../config/retrieveSecrets");
 const { addressSchema } = require("./address");
+const { ChildcareCenter, centerSchema } = require("./center");
 
 const userSchema = new mongoose.Schema(
 	{
@@ -25,6 +26,7 @@ const userSchema = new mongoose.Schema(
 		address: { type: addressSchema },
 		phone: { type: Number, trim: true },
 		isOnboardedFlag: { type: Boolean, default: false },
+		childcareCenter: { type: mongoose.Types.ObjectId, ref: "Childcare_Center"},
 		createdAt: { type: Date, default: Date.now },
 		loginToken: { type: String, default: null },
 	});

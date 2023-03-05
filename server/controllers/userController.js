@@ -15,7 +15,7 @@ const createOne = async (req, res) => {
 
 	try {
 		const user = await query.findOne(User, { email });
-
+		
 		if (user) return res.status(400).send({ error: "Email already in use" });
 
 		const newUser = await query.createOne(User, req.body);
@@ -50,7 +50,7 @@ const updateOne = async (req, res, next) => {
 		const updatedUser = await query.updateOne(User, id, req.body);
 
 		if (!updatedUser)
-			return res.status(400).send({ error: `Failed to update user` });
+			return res.status(400).send({ error: `Failed to update user` });generateAuthToken
 
 		res.status(200).send(updatedUser);
 	} catch (err) {
