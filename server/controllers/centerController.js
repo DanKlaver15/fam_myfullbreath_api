@@ -1,4 +1,5 @@
 const ChildcareCenter = require("../models/center");
+const crudController = require("../utils/crud");
 const query = require("../utils/query");
 
 const getAll = async (req, res, next) => {
@@ -12,5 +13,6 @@ const getAll = async (req, res, next) => {
 };
 
 module.exports = {
+	...crudController(ChildcareCenter),
 	getAll
 };
