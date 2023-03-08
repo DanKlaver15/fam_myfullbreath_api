@@ -29,4 +29,4 @@ const centerSchema = new Schema({
 
 const ChildcareCenter = mongoose.model("Childcare_Center", centerSchema);
 
-module.exports = { ChildcareCenter, centerSchema };
+module.exports = ChildcareCenter;
