@@ -1,4 +1,4 @@
-const query = require("./query");
+const query = require("./query"); 
 
 const getOne = (model) => async (req, res, next) => {
   const { id } = req.params;
