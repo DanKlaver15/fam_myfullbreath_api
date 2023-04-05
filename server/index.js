@@ -7,6 +7,7 @@ const centers = require("./routes/centers");
 const verifyEmail = require("./routes/verifyEmail");
 const passwordReset = require("./routes/passwordReset");
 const analytics = require("./routes/analytics");
+const onboarding = require("./routes/onboarding");
 
 const app = express();
 connectDB();
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(cors());
 app.use("/api/users", users);
 app.use("/api/auth", auth);
+app.use("/api/onboarding", onboarding);
 app.use("/api/centers", centers);
 app.use("/api/verifyEmail", verifyEmail);
 app.use("/api/resetPassword", passwordReset);
