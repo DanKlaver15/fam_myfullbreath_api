@@ -19,10 +19,14 @@ const validateUser = (req, res, next) => {
 		userType: Joi.number().min(1).required(),
 	});
 
-	if (schema.validate(req.body)) {
-		next();
+	if ("password" in req.body) {
+		if (schema.validate(req.body)) {
+			next();
+		} else {
+			res.status(400).send({ error: "One of the fields in your requested did not meet the requirements" }).end();
+		}
 	} else {
-		res.status(400).send({ error: "One of the fields in your requested did not meet the requirements" }).end();
+		next();
 	}
 };
 
