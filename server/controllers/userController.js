@@ -50,7 +50,7 @@ const updateOne = async (req, res, next) => {
 		const updatedUser = await query.updateOne(User, id, req.body);
 
 		if (!updatedUser)
-			return res.status(400).send({ error: `Failed to update user` });generateAuthToken
+			return res.status(400).send({ error: `Failed to update user` });
 
 		res.status(200).send(updatedUser);
 	} catch (err) {
