@@ -17,7 +17,7 @@ function Home() {
 						My Full Breath
 					</h2>
 					<p className="mt-4 text-center text-lg leading-relaxed text-gray-500">
-						An app created by
+						An app created by 
 						<a href="https://www.famallies.org/" target="_blank" rel="noreferrer" alt="FAM Allies Home Page">Fight Asthma Milwaukee Allies, Inc.</a> 
 					</p>
 				</div>
