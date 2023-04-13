@@ -1,0 +1,39 @@
+name: Push-Main-Branch-Push-to-EC2
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  deploy:
+    name: Deploy to EC2 on manual push
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout the files
+        uses: actions/checkout@v3
+
+      - name: Deploy to AWS EC2
+        uses: easingthemes/ssh-deploy@v3.1.0
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.HOST_DNS }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          TARGET: ${{ secrets.TARGET_DIR }}
+          
+#       - name: Execute remote SSH commands
+#         uses: appleboy/ssh-action@master
+#         with:
+#           host: ${{ secrets.HOST_DNS }}
+#           username: ${{ secrets.USERNAME }}
+#           key: ${{ secrets.EC2_SSH_KEY }}
+#           script: |
+#             cd ~/myfullbreath_api/server
+#             npm install
+#             cd ~/myfullbreath_api/client
+#             npm install
+#             npm run build
+#             sudo rm sudo rm -rf /var/www/html
+#             sudo sudo mv build /var/www/html
+#             sudo service nginx restart
