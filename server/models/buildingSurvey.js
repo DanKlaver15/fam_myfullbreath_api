@@ -8,7 +8,7 @@ const buildingSurveySchema = new mongoose.Schema(
 		headStart: { type: Boolean, required: true, default: false },
 		otherAccreditationType: { type: Number, required: true, default: 0 },
 		otherAccreditationTypeOther: { type: String, default: "" },
-		centerAsthmaPolicy: { type: [Number], required: true },
+		centerAsthmaPolicy: { type: [{ Boolean, String }], required: true },
 		totalAllowableEnrollment: { type: Number, required: true, default: 0 },
 		totalAllowableEnrollmentUnderFive: { type: Number, required: true, default: 0 },
 		weekdayHoursOpen: { type: Date, required: true, default: Date.now },
@@ -22,9 +22,9 @@ const buildingSurveySchema = new mongoose.Schema(
 		smokeInBuilding: { type: Boolean, required: true, default: false },
 		smellTobaccoFreq: { type: Number, required: true, default: 0 },
 		petInBuilding: { type: Boolean, required: true, default: false },
-		cookingType: { type: [Number], required: true },
+		cookingType: { type: [{ Boolean, String }], required: true },
 		cookingTypeOther: { type: String, default: "" },
-		recentPestControlType: { type: [Number], required: true },
+		recentPestControlType: { type: [{ Boolean, String }], required: true },
 		moldInBuilding: { type: Boolean, required: true, default: false },
 	});
 
