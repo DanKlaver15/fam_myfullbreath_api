@@ -7,6 +7,7 @@ const centers = require("./routes/centers");
 const verifyEmail = require("./routes/verifyEmail");
 const passwordReset = require("./routes/passwordReset");
 const analytics = require("./routes/analytics");
+const log = require("./routes/log");
 const onboarding = require("./routes/onboarding");
 
 const app = express();
@@ -21,6 +22,7 @@ app.use("/api/centers", centers);
 app.use("/api/verifyEmail", verifyEmail);
 app.use("/api/resetPassword", passwordReset);
 app.use("/api/analytics", analytics);
+app.use("/api/log", log);
 app.use(express.static("data"));
 
 const port = process.env.PORT || 5000;
